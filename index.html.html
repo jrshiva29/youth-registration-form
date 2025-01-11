@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Youth Registration Form</title>
+
+	<link rel="stylesheet" tpye="text/css" href="style.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<form autocomplete="off" method="post" name="google-sheet">
+			<h3> <center>Youth Regisration Form </center></h3> <br> 
+			<input type="text" placeholder="Type Your Name " name="Name">
+			<input type="text" placeholder="Type Your Father Name " name="FatherName">
+			<input type="text" placeholder="Type Your Phone Number " name="Mobile">
+			<input type="date" placeholder="Type Your D.O.B " name="dob">
+		<label><b> Gender</b></label><br>
+
+
+			<left>Male  <input type="radio" name="gender" value="male"> </left>
+			<left>Female <input type="radio"name="gender" value="Female"> </left> 
+				
+            <button type="submit" name=submit ">Send </button>
+			<button type="reset" class="reset"> Reset </button>
+		
+		</form>
+		
+	</div>
+
+	<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxqETZ_gR4tYcugB3L3RmgJLl8MArJmVW7gmeuEs3lADqJzephg92w4iqpV_7C2KZ_0/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Your record has been sucsefully submit "))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+    
+</body>
+</html>
